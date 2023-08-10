@@ -1,11 +1,11 @@
-version: '3'
+version: "3"
 
 services:
   Jenkins:
     image: jenkins/jenkins
     container_name: Jenkins
     volumes:
-      - $PWD/data/jenkins_home:/var/jekins_home
+      - $PWD/data/jenkins_home:/var/jenkins_home
     ports:
-      - 8080:8080
+      - "8080:8080"
     restart: on-failure
