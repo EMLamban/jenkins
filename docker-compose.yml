@@ -8,5 +8,4 @@ services:
       - $PWD/data/jenkins_home:/var/jekins_home
     ports:
       - 8080:8080
-      - 50000:50000
     restart: on-failure
