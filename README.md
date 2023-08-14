@@ -51,5 +51,5 @@ Si dejamos el directorio por defecto (/home/ansible/.ssh/), la llave se creará 
 
 >Nota: Es importante recordar que, para poder conectar al servidor remoto, se necesita que exista el usuario *ansible* también en él. Una vez copiada la llave pública en *authorized_keys*, hay que darle la propiedad al usuario ansible y darle pemisos 600:
 
-`chown ansible:ansible /home/ansible/.ssh/<key_name>`
-`chmod 600 /home/ansible/.ssh/<key_name>` 
+`chown ansible:ansible /home/ansible/.ssh/authorized_keys`
+`chmod 600 /home/ansible/.ssh/authorized_keys` 
