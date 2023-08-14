@@ -1,12 +1,16 @@
-version: "3"
+version: "3.8"
 
-services:
-  Jenkins:
+services: 
+  jenkins:
     image: jenkins-ansible
-    build: .
-    container_name: Jenkins-ansible
+    build:
+      context: .
+      args:
+        - ANSIBLE_PASSWORD=${ANSIBLE_PASSWORD}
+    container_name: jenkins-ansible
     volumes:
       - $PWD/data/jenkins_home:/var/jenkins_home
+      - $PWD/ansible:/home/ansible
     ports:
       - "8080:8080"
     restart: on-failure
