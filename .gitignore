@@ -1,3 +1,5 @@
 data
 .env
 ansible/.ssh/*
+ansible/.bash_history
+README.md
