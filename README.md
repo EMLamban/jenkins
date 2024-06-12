@@ -39,6 +39,13 @@ Una vez desplegado el servicio, y sólo la primera vez, tendremos que entrar al 
 `docker exec -it <container_id> bash`
 `chown -R ansible:ansible /home/ansible`
 
+### Plugins de Jenkins
+---
+
+Una vez desplegado Jenkins por primera vez, hay que descargar e instalar el plugin de ***Ansible***, para poder indicarle los inventarios y los playbooks de Ansible a los que llamará Jenkins. 
+
+Por otro lado, es recomendable instalar los plugins ***AnsiColor***: esto es simplemente para darle color al Output de vuestros jobs de Jenkins como si estuviérais en la consola. Es un plugin opcional, pero os ayudará a ver vuestros output con mayor claridad y os ayudará a depurar un posible problema. Para habilitarlo, en nuestro job de Jenkins, debemos habilitar la opción dentro de *Entorno de ejecución* ***Color ANSI Console Output***. También deberemos activar, dentro de *Invoke Ansible Playbook*, en las opciones *Avanzado*, la opción ***Colorized stdout***.
+
 ### Creación de llaves SSH
 ---
 
@@ -53,3 +60,8 @@ Si dejamos el directorio por defecto (/home/ansible/.ssh/), la llave se creará 
 
 `chown ansible:ansible /home/ansible/.ssh/authorized_keys`
 `chmod 600 /home/ansible/.ssh/authorized_keys` 
+
+>Nota 2: Además, es recomendable lanzar por primera vez la conexión entre ansible y la máquina remota manualmente, para que cree el archivo *know_hosts* y las conexiones no fallen (otra opción es crear manualmente el archivo *know_hosts*). Para ello, accedemos al contenedor de *jenkins-ansible* y lanzamos un ping desde ansible con el siguiente comando:
+
+`docker exec -it <container_id> bash`
+`ansible -m ping -i <inventory_name> <host_name>`
